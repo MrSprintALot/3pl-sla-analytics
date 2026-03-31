@@ -1,6 +1,0 @@
-warehouse_id,warehouse_name,city,capacity_band
-201,WH-LIM-01,Lima,Large
-202,WH-ARE-01,Arequipa,Medium
-203,WH-BOG-01,Bogota,Large
-204,WH-SCL-01,Santiago,Medium
-205,WH-CDMX-01,CDMX,Large
