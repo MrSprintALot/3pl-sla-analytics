@@ -1,6 +1,0 @@
-carrier_id,carrier_name,carrier_type,late_bias
-101,AndesExpress,Last-mile,0.03
-102,RayoLog,Last-mile,0.06
-103,PumaCargo,Linehaul,0.04
-104,CondorShip,Last-mile,0.02
-105,PacificFreight,Linehaul,0.05
