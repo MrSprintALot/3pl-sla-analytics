@@ -18,10 +18,10 @@ A production-grade BI solution simulating a real-world 3PL (Third-Party Logistic
 
 ## Power BI Report
 
-> **📥 Download the .pbix file**
+> **📥 Link**
 >
 > <!-- ============================================================ -->
-> <!-- COPY YOUR .PBIX LINK HERE                                     -->
+> <!-- https://app.powerbi.com/groups/1110f86d-c2eb-400b-ab06-ca85a8440c79/reports/f861b637-8707-4b6f-a378-07101aadbcce/3cdd437ee3033e73d700?experience=power-bi -->
 > <!-- Paste your OneDrive / SharePoint / Google Drive share link   -->
 > <!-- Example: [Download claude_bi_test.pbix](https://your-link)   -->
 > <!-- ============================================================ -->
