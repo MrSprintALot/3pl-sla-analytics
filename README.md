@@ -40,17 +40,17 @@ A mid-size 3PL operator running warehousing and last-mile distribution across LA
 
 | Finding | Value |
 |---------|-------|
-| SLA Breach Rate (FY 2025) | **18.2%** — 8.2pp above the 10% target |
-| Total Late Deliveries | **2,187** out of 12,000 |
-| Cost of SLA Breaches | **$102.5K** (18.3% of total spend) |
-| Worst Carrier | **RayoLog** — 19.7% breach rate |
-| Best Carrier | **CondorShip** — 16.3% breach rate |
-| Worst Region | **Mexico** — 20.4% breach rate |
+| SLA Breach Rate (FY 2025) | **18.0%** — 8.0pp above the 10% target |
+| Total Late Deliveries | **2,127** out of 11,821 |
+| Cost of SLA Breaches | **$102K** (18.3% of total spend) |
+| Worst Carrier | **RayoLog** — 19.5% breach rate |
+| Best Carrier | **CondorShip** — 16.0% breach rate |
+| Worst Region | **Mexico** — 20.2% breach rate |
 | Worst Lane | **PumaCargo × Mexico** — 23.9% |
-| Best Lane | **CondorShip × Colombia** — 14.3% |
+| Best Lane | **CondorShip × Colombia** — 13.8% |
 | Avg Delay (late only) | **4.6 days** |
-| Severe Delays (8+ days) | **14.3%** of all late events |
-| Express vs Standard Delta | **+0.8pp** — Express underperforms Standard |
+| Severe Delays (8+ days) | **14.2%** of all late events |
+| Express vs Standard Delta | **+0.6pp** — Express underperforms Standard |
 | Recoverable at 10% target | **~$45K/year** |
 
 ---
@@ -60,7 +60,7 @@ A mid-size 3PL operator running warehousing and last-mile distribution across LA
 ### Operational
 - **REC 01 — Rebalance volume off RayoLog.** RayoLog × Mexico (22.2%) is the highest-volume failure lane. Shifting 20% of Mexico allocation to CondorShip would recover an estimated $5.1K/year.
 - **REC 02 — Audit Express routing logic.** Express service should outperform Standard; a +0.8pp gap signals a routing or prioritization issue at the lane level, not a capacity problem.
-- **REC 03 — Root-cause 8+ day delays.** 312 deliveries breached 8+ days, a 14.3% share that disproportionately drives client escalations and requires dynamic route-failure analysis.
+- **REC 03 — Root-cause 8+ day delays.** 301 deliveries breached 8+ days — a 14.2% share that disproportionately drives client escalations and requires dynamic route-failure analysis.
 
 ### Strategic
 - **REC 01 — Formalize quarterly carrier scorecards.** Institutionalize carrier performance reviews tied to contract SLA thresholds. CondorShip proves sub-15% is achievable; use it as the benchmark.
@@ -85,7 +85,7 @@ A mid-size 3PL operator running warehousing and last-mile distribution across LA
               │            │            │
     ┌─────────┴──┐  ┌──────┴──────┐  ┌─┴──────────┐
     │ dim_carrier│  │fact_deliver.│  │ dim_region  │
-    │  (5 rows)  │◄─┤ (12,000 r.) ├─►│  (5 rows)  │
+    │  (5 rows)  │◄─┤ (11,821 r.) ├─►│  (5 rows)  │
     └────────────┘  └──────┬──────┘  └────────────┘
                            │
               ┌────────────┼────────────┐
