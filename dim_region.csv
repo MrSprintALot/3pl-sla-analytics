@@ -1,6 +1,0 @@
-region_id,country,city,zone,late_bias
-1,Peru,Lima,Coast,0.02
-2,Peru,Arequipa,South,0.05
-3,Colombia,Bogota,Andean,0.04
-4,Chile,Santiago,Central,0.03
-5,Mexico,CDMX,Central,0.06
