@@ -2,7 +2,7 @@
 
 **Power BI · DAX · Star Schema · Executive Dashboard**
 
-A production grade BI solution simulating a real world 3PL (Third Party Logistics) analytics implementation. Built to demonstrate executive level analytical thinking: star schema design, a 101-measure DAX library, and a two page dashboard that moves from observation to action.
+A production grade BI solution simulating a real world 3PL (Third Party Logistics) analytics implementation. Built to demonstrate executive level analytical thinking: star schema design, a 101 measure DAX library, and a two page dashboard that moves from observation to action.
 
 ---
 
