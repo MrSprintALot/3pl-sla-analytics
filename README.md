@@ -2,7 +2,7 @@
 
 **Power BI · DAX · Star Schema · Executive Dashboard**
 
-A production-grade BI solution simulating a real-world 3PL (Third-Party Logistics) analytics implementation. Built to demonstrate executive-level analytical thinking: star schema design, a 101-measure DAX library, and a two-page dashboard that moves from observation to action.
+A production grade BI solution simulating a real world 3PL (Third Party Logistics) analytics implementation. Built to demonstrate executive level analytical thinking: star schema design, a 101-measure DAX library, and a two page dashboard that moves from observation to action.
 
 ---
 
@@ -32,7 +32,7 @@ A mid-size 3PL operator running warehousing and last-mile distribution across LA
 
 1. What is our current SLA breach rate and how far are we from the 10% target?
 2. Which carriers and regions are driving the most breaches?
-3. What does a breach event actually cost — and how much is recoverable?
+3. What does a breach event actually cost, and how much is recoverable?
 4. Is our Express service performing worse than Standard, and why?
 5. Which specific carrier × region lanes should operations prioritize?
 
@@ -62,11 +62,11 @@ A mid-size 3PL operator running warehousing and last-mile distribution across LA
 ### Operational
 - **REC 01 — Rebalance volume off RayoLog.** RayoLog × Mexico (22.2%) is the highest-volume failure lane. Shifting 20% of Mexico allocation to CondorShip would recover an estimated $5.1K/year.
 - **REC 02 — Audit Express routing logic.** Express service should outperform Standard; a +0.8pp gap signals a routing or prioritization issue at the lane level, not a capacity problem.
-- **REC 03 — Root-cause 8+ day delays.** 312 deliveries breached 8+ days — a 14.3% share that disproportionately drives client escalations and requires dynamic route-failure analysis.
+- **REC 03 — Root-cause 8+ day delays.** 312 deliveries breached 8+ days, a 14.3% share that disproportionately drives client escalations and requires dynamic route-failure analysis.
 
 ### Strategic
 - **REC 01 — Formalize quarterly carrier scorecards.** Institutionalize carrier performance reviews tied to contract SLA thresholds. CondorShip proves sub-15% is achievable; use it as the benchmark.
-- **REC 02 — Implement SLA penalty pass-through.** With $102.5K in breach costs and a clear $45K recovery opportunity at the 10% target, a contractual cost-pass-through mechanism creates direct financial incentive for carrier improvement.
+- **REC 02 — Implement SLA penalty pass through.** With $102.5K in breach costs and a clear $45K recovery opportunity at the 10% target, a contractual cost pass through mechanism creates direct financial incentive for carrier improvement.
 
 ---
 
@@ -111,7 +111,7 @@ A mid-size 3PL operator running warehousing and last-mile distribution across LA
 
 ### Date Strategy
 
-The active relationship is on `delivered_date` — this is an operational SLA dashboard; the primary analytical question is "what delivered in this period, and how did it perform?" Role-playing inactive relationships for `promised_date`, `order_date`, and `ship_date` are activated via `USERELATIONSHIP()` where needed (e.g., SLA Breach Rate by Promised Date for backlog analysis).
+The active relationship is on `delivered_date` , this is an operational SLA dashboard; the primary analytical question is "what delivered in this period, and how did it perform?" Role playing inactive relationships for `promised_date`, `order_date`, and `ship_date` are activated via `USERELATIONSHIP()` where needed (e.g., SLA Breach Rate by Promised Date for backlog analysis).
 
 ### Key fact_deliveries Columns
 
@@ -136,7 +136,7 @@ The active relationship is on `delivered_date` — this is an operational SLA da
 | **SLA Breach Rate** | % of deliveries where actual delivery date exceeded the promised date. Target: < 10%. | `DIVIDE([Late Deliveries], [Total Deliveries])` |
 | **On-Time Delivery %** | Complement of SLA Breach Rate. Target: > 90%. | `1 - [SLA Breach Rate]` |
 | **Late Deliveries** | Count of deliveries with `is_late = 1` (delay_days > 0). | `SUM(fact_deliveries[is_late])` with TREATAS |
-| **Avg Delay Days** | Mean delay among late-only deliveries. Excludes on-time to avoid signal dilution. | `AVERAGEX(FILTER(...delay_days > 0), delay_days)` |
+| **Avg Delay Days** | Mean delay among late only deliveries. Excludes on-time to avoid signal dilution. | `AVERAGEX(FILTER(...delay_days > 0), delay_days)` |
 | **Cost of SLA Breaches** | Total shipping cost attributed to breach events. Proxy for financial exposure. | `CALCULATE(SUM(cost), is_late = 1)` |
 | **Express vs Standard Delta** | Breach rate gap between service levels. Positive = Express underperforms. | `[Express SLA Breach Rate] - [Standard SLA Breach Rate]` |
 | **Recoverable Cost** | Estimated savings if breach rate were reduced to the 10% target. | Formula in DAX file |
@@ -221,17 +221,17 @@ Power BI Report Layer
 
 **Design decisions worth noting:**
 
-- `TREATAS` used in core KPI measures to force `delivered_date` context independent of which date column drives the visual axis — avoids BLANK rows in time series.
+- `TREATAS` used in core KPI measures to force `delivered_date` context independent of which date column drives the visual axis avoids BLANK rows in time series.
 - HTML Content visual used for the Service Level & Cost panel to achieve layout density and conditional formatting not achievable with native visuals.
-- `dim_period` as a disconnected table (no relationship to fact) — drives period measures via `SELECTEDVALUE()` pattern, avoids cross-filter contamination.
-- `country_upper` calculated column in `dim_region` using `UPPER()` — ensures consistent casing in matrix column headers regardless of source data.
+- `dim_period` as a disconnected table (no relationship to fact)  drives period measures via `SELECTEDVALUE()` pattern, avoids cross-filter contamination.
+- `country_upper` calculated column in `dim_region` using `UPPER()`  ensures consistent casing in matrix column headers regardless of source data.
 - `RANKX` with `DENSE` prevents rank gaps on ties; `HASONEVALUE` guard suppresses total row rank.
 
 ---
 
 ## Dataset
 
-Synthetic dataset — 12,000 deliveries, FY 2025 (Jan–Dec), generated with realistic late_bias parameters per carrier and region.
+Synthetic dataset, 12,000 deliveries, FY 2025 (Jan–Dec), generated with realistic late_bias parameters per carrier and region.
 
 | File | Rows | Description |
 |------|------|-------------|
@@ -248,11 +248,11 @@ Synthetic dataset — 12,000 deliveries, FY 2025 (Jan–Dec), generated with rea
 
 | Tool | Version | Purpose |
 |------|---------|---------|
-| Power BI Desktop | June 2025 | Report authoring |
+| Power BI Desktop | March 2026 | Report authoring |
 | DAX | — | Semantic model calculations |
 | Power Query (M) | — | Data transformation |
-| Figma | — | Dashboard background design |
-| Python | 3.x | Dataset generation |
+| Figma | March 2026 | Dashboard background design |
+| Python | 3.14 | Dataset generation |
 
 ---
 
@@ -260,4 +260,4 @@ Synthetic dataset — 12,000 deliveries, FY 2025 (Jan–Dec), generated with rea
 
 Built as a portfolio project to demonstrate senior BI analyst capabilities: data modeling, DAX development, executive dashboard design, and business storytelling.
 
-**Focus areas demonstrated:** Star schema design · Role-playing date dimensions · TREATAS pattern · RANKX · HTML Content visuals · Conditional formatting via DAX · Executive narrative structure
+**Focus areas demonstrated:** Star schema design · Role playing date dimensions · TREATAS pattern · RANKX · HTML Content visuals · Conditional formatting via DAX · Executive narrative structure
