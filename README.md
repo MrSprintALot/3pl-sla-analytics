@@ -60,7 +60,7 @@ A mid-size 3PL operator running warehousing and last-mile distribution across LA
 ### Operational
 - **REC 01 — Rebalance volume off RayoLog.** RayoLog × Mexico (22.2%) is the highest-volume failure lane. Shifting 20% of Mexico allocation to CondorShip would recover an estimated $5.1K/year.
 - **REC 02 — Audit Express routing logic.** Express service should outperform Standard; a +0.8pp gap signals a routing or prioritization issue at the lane level, not a capacity problem.
-- **REC 03 — Root-cause 8+ day delays.** 301 deliveries breached 8+ days — a 14.2% share that disproportionately drives client escalations and requires dynamic route-failure analysis.
+- **REC 03 — Root-cause 8+ day delays.** 301 deliveries breached 8+ days, a 14.2% share that disproportionately drives client escalations and requires dynamic route-failure analysis.
 
 ### Strategic
 - **REC 01 — Formalize quarterly carrier scorecards.** Institutionalize carrier performance reviews tied to contract SLA thresholds. CondorShip proves sub-15% is achievable; use it as the benchmark.
